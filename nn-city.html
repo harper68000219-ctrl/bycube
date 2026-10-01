@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Процедурный Нижний Новгород для UE5.8 — кейс ByCUBE</title>
+<meta name="description" content="Кейс ByCUBE: процедурный Нижний Новгород (пл. Свободы) для UE5.8. Пайплайн OSM → Blender CityGenerator → FBX → UE: UCX-коллизии, LOD, 60 FPS.">
+<link rel="canonical" href="https://bycube.ru/nn-city.html">
+<meta property="og:title" content="Процедурный НН для UE5.8 — кейс ByCUBE">
+<meta property="og:description" content="пл. Свободы: OSM → Blender → UE. FBX Scale100 Z-up, UCX/LOD.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bycube.ru/nn-city.html">
+<meta property="og:image" content="https://bycube.ru/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700;900&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Процедурный Нижний Новгород для UE5.8","author":{"@type":"Organization","name":"ByCUBE"},"about":"OSM → Blender CityGenerator → UE5.8, FBX, UCX/LOD"}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--ivory:#FFF9F0;--charcoal:#1A1A1A;--gold:#C9A961;--silver:#E8E5DF}
+body{font-family:'Cormorant Garamond',serif;background:var(--ivory);color:var(--charcoal);line-height:1.6}
+::selection{background:var(--gold);color:var(--ivory)}
+header{position:fixed;top:0;width:100%;padding:22px 60px;display:flex;justify-content:space-between;align-items:center;z-index:100;background:rgba(255,249,240,.7);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,.06)}
+.logo-row{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-row img{width:34px;height:34px;object-fit:contain}
+.logo-row b{font-family:'Playfair Display',serif;letter-spacing:4px;font-size:20px}
+nav{display:flex;gap:36px}
+nav a{font-size:14px;letter-spacing:2px;text-transform:uppercase;text-decoration:none}
+main{max-width:1100px;margin:0 auto;padding:150px 32px 80px}
+.badge{display:inline-block;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:8px 18px;border-radius:100px;margin-bottom:24px}
+h1{font-family:'Playfair Display',serif;font-size:clamp(40px,6vw,76px);line-height:1.02;letter-spacing:-2px;margin-bottom:20px}
+.lead{font-size:22px;opacity:.8;max-width:800px}
+.viewer-wrap{margin:44px 0;background:var(--charcoal);color:var(--ivory);padding:36px;border-radius:4px}
+.showcase-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+.showcase-grid div{background:rgba(255,255,255,.06);border:1px solid rgba(201,169,97,.4);padding:28px 18px;text-align:center;font-size:17px}
+.showcase-grid b{display:block;font-family:'Playfair Display',serif;font-size:20px;color:var(--gold);margin-bottom:6px}
+.stack-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin:36px 0}
+.stack-grid div{background:var(--silver);padding:26px}
+.stack-grid h3{font-family:'Playfair Display',serif;font-size:22px;margin-bottom:8px}
+.stack-grid p{font-size:18px;opacity:.8}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin:30px 0 10px}
+.step{border-top:2px solid var(--gold);padding-top:18px}
+.step b{font-family:'Playfair Display',serif;font-size:22px}
+.step p{font-size:18px;opacity:.8;margin-top:8px}
+.cta-box{margin:50px 0;background:linear-gradient(135deg,var(--charcoal),#2D2D2D);color:var(--ivory);padding:44px;text-align:center}
+.cta-box h2{font-family:'Playfair Display',serif;font-size:32px;margin-bottom:12px}
+.cta-box p{font-size:19px;opacity:.75;margin-bottom:26px}
+.btn{display:inline-block;padding:18px 44px;background:var(--gold);color:var(--charcoal);text-decoration:none;font-size:14px;letter-spacing:3px;text-transform:uppercase;font-weight:600}
+footer{text-align:center;padding:50px 20px;font-size:15px;opacity:.6;letter-spacing:1px}
+@media(max-width:800px){header{padding:16px 20px}nav{gap:18px}nav a{font-size:12px}.stack-grid,.steps{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+<a class="logo-row" href="index.html"><img src="logo.png" alt="ByCUBE"><b>ByCUBE</b></a>
+<nav><a href="index.html#services">Услуги</a><a href="index.html#portfolio">Работы</a><a href="index.html#contact">Контакты</a></nav>
+</header>
+<main>
+<div class="badge">Кейс • UE 5.8 • OSM → Blender → UE</div>
+<h1>Процедурный Нижний Новгород для UE5.8</h1>
+<p class="lead">пл. Свободы как играбельная сцена: улицы, дома, силуэт города — из открытых OSM-данных через Blender CityGenerator / iCity в Unreal Engine 5.8. Стабильные 60 FPS на средней видеокарте.</p>
+<div class="viewer-wrap">
+<div class="badge" style="border-color:var(--gold);color:var(--gold)">Рендер-сетка • пл. Свободы • LOD0/LOD1</div>
+<p style="font-size:20px;max-width:760px">Вид сверху на квартал: массы домов, улично-дорожная сетка, дворы. Полная сцена собирается в UE5.8 из FBX (Scale 100, Z-up) с UCX-коллизиями.</p>
+<div class="showcase-grid">
+<div><b>SM_Svoboda_01</b>массы домов • LOD0–2</div>
+<div><b>SM_Streets</b>дороги • landscape-коллизия</div>
+<div><b>SM_Yard</b>дворы • пропсы • свет</div>
+</div>
+</div>
+<h2 style="font-family:'Playfair Display',serif;font-size:34px;margin-bottom:6px">Стек и требования движка</h2>
+<div class="stack-grid">
+<div><h3>Blender 5.2 + CityGenerator / iCity</h3><p>OSM-импорт, процедурные фасады, чистка топологии, раскладка по кварталам.</p></div>
+<div><h3>FBX: Scale 100, Z-up</h3><p>Единый масштаб под UE, пивот на нуле квартала, именование SM_Svoboda_*</p></div>
+<div><h3>UCX-коллизии</h3><p>Боксы UCX_ на дом, улица — landscape-коллизия. Без per-poly физики.</p></div>
+<div><h3>LOD 0–2 + Nanite off</h3><p>LOD0 до 20к tris, LOD2 — билборд. Culling distance 1500–4000 м.</p></div>
+</div>
+<h2 style="font-family:'Playfair Display',serif;font-size:34px">Пайплайн: 3 шага</h2>
+<div class="steps">
+<div class="step"><b>1. OSM → Blender</b><p>Выгрузка пл. Свободы, привязка координат, генерация масс домов и дорог.</p></div>
+<div class="step"><b>2. Blender → FBX</b><p>Ретопо, UV2 под лайтмап, LOD, UCX, экспорт Scale 100 Z-up.</p></div>
+<div class="step"><b>3. FBX → UE5.8</b><p>Датасеты уровней, стриминг, свет, тест 60 FPS, пак для игры.</p></div>
+</div>
+<div class="cta-box">
+<h2>Хочу такой город для своей игры</h2>
+<p>Сделаем ваш квартал / город под UE/Unity за 2–4 недели. Ответ в течение дня.</p>
+<a class="btn" href="https://t.me/Avito3d?text=%D0%A5%D0%BE%D1%87%D1%83+%D1%82%D0%B0%D0%BA%D0%BE%D0%B9+%D0%B3%D0%BE%D1%80%D0%BE%D0%B4+%D0%B4%D0%BB%D1%8F+%D1%81%D0%B2%D0%BE%D0%B5%D0%B9+%D0%B8%D0%B3%D1%80%D1%8B" target="_blank" rel="noopener">Хочу такой город</a>
+</div>
+<p style="font-size:17px;opacity:.65">← <a href="index.html">На главную ByCUBE</a> · <a href="index.html#contact">Заказать в Telegram: @Avito3d</a></p>
+</main>
+<footer>© 2026 ByCUBE · Процедурный НН · <a href="https://bycube.ru/nn-city.html">bycube.ru/nn-city.html</a></footer>
+</body>
+</html>

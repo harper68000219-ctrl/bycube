@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://bycube.ru/sitemap.xml
