@@ -3,143 +3,76 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Процедурный Нижний Новгород для UE5.8 — кейс ByCUBE</title>
-<meta name="description" content="Кейс ByCUBE: процедурный Нижний Новгород (пл. Свободы) для UE5.8. Пайплайн OSM → Blender CityGenerator → FBX → UE: UCX-коллизии, LOD 0–2, 60 FPS.">
+<title>Квартал Свободы UE5.8 - ByCUBE nn-city</title>
+<meta name="description" content="Кейс Свободы. OSM плюс Blender плюс UE5.8. FBX Scale 100. UCX и LOD. 60 FPS. 3 недели. Нижний Новгород.">
 <link rel="canonical" href="https://bycube.ru/nn-city.html">
-<meta property="og:title" content="Процедурный НН для UE5.8 — кейс ByCUBE">
-<meta property="og:description" content="пл. Свободы: OSM → Blender → UE. FBX Scale 100 Z-up, UCX/LOD, 60 FPS.">
+<meta property="og:title" content="Квартал Свободы UE5.8 - ByCUBE">
+<meta property="og:description" content="OSM. Blender. FBX. 60 FPS. Схема из 3 шагов.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://bycube.ru/nn-city.html">
 <meta property="og:image" content="https://bycube.ru/logo.png">
-<meta property="og:locale" content="ru_RU">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Процедурный НН для UE5.8 — ByCUBE">
-<meta name="twitter:description" content="OSM → Blender → UE5.8: массы, улицы, дворы. 60 FPS.">
+<meta name="twitter:title" content="Квартал Свободы UE5.8 - ByCUBE">
 <meta name="twitter:image" content="https://bycube.ru/logo.png">
 <link rel="icon" type="image/png" href="logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800;900&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Manrope:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Manrope:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","headline":"Процедурный Нижний Новгород для UE5.8","author":{"@type":"Organization","name":"ByCUBE"},"about":"OSM → Blender CityGenerator → UE5.8, FBX Scale 100 Z-up, UCX/LOD, 60 FPS","mainEntityOfPage":"https://bycube.ru/nn-city.html"}
+{"@context":"https://schema.org","@type":"Article","headline":"Квартал Свободы для UE5.8","author":{"@type":"Organization","name":"ByCUBE"},"about":"OSM Blender FBX Scale 100 UCX LOD 60 FPS","mainEntityOfPage":"https://bycube.ru/nn-city.html"}
 </script>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#0B0B0F;--card:#16161F;--line:rgba(255,255,255,.1);--gold:#E8B84B;--vio:#7C5CFF;--txt:#F2F0EA;--mut:rgba(242,240,234,.62)}
-html{scroll-behavior:smooth}
-body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(--txt);line-height:1.6}
-::selection{background:var(--gold);color:#0B0B0F}
-a{color:inherit}
-h1,h2,h3{font-family:'Unbounded',sans-serif}
-.hdr{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:100;width:min(1120px,calc(100% - 24px));display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 12px 12px 20px;background:rgba(14,14,20,.62);border:1px solid var(--line);border-radius:100px;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
-.badge3{font-family:'Unbounded',sans-serif;font-weight:800;font-size:15px;background:linear-gradient(135deg,var(--gold),var(--vio));color:#0B0B0F;padding:9px 13px;border-radius:14px}
-.brand small{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--mut)}
-.hdr nav{display:flex;gap:22px;align-items:center}
-.hdr nav a{font-size:13px;letter-spacing:1.6px;text-transform:uppercase;text-decoration:none;color:var(--mut)}
-.hdr nav a:hover{color:var(--txt)}
-.btn{display:inline-flex;align-items:center;justify-content:center;padding:15px 32px;border-radius:100px;font-weight:700;font-size:14px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;border:1px solid transparent}
-.btn-gold{background:linear-gradient(135deg,var(--gold),#f5cf7a);color:#0B0B0F}
-.btn-ghost{border-color:var(--line);color:var(--txt);background:rgba(255,255,255,.04)}
-.btn-sm{padding:11px 22px;font-size:12px}
-main{max-width:1120px;margin:0 auto;padding:130px 24px 70px}
-.kicker{display:inline-block;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);border:1px solid rgba(232,184,75,.4);padding:9px 18px;border-radius:100px;background:rgba(232,184,75,.07);margin-bottom:22px}
-h1{font-size:clamp(32px,6vw,68px);line-height:1.04;text-transform:uppercase}
-h1 em{font-style:normal;background:linear-gradient(100deg,var(--gold),var(--vio));-webkit-background-clip:text;background-clip:text;color:transparent}
-.lead{color:var(--mut);font-size:clamp(16px,2vw,20px);max-width:800px;margin-top:16px}
-.vitrine{margin:36px 0;border:1px solid rgba(232,184,75,.3);border-radius:24px;overflow:hidden;background:linear-gradient(135deg,#14141d,#0B0B0F)}
-.v-head{padding:26px 28px;border-bottom:1px solid var(--line);display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:space-between}
-.v-head small{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--gold)}
-.v-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
-.v-cell{padding:34px 24px;text-align:center;border-right:1px solid var(--line)}
-.v-cell:last-child{border-right:0}
-.v-cell b{display:block;font-family:'Unbounded',sans-serif;font-size:18px;color:var(--gold);margin-bottom:8px}
-.v-cell p{color:var(--mut);font-size:15px}
-.v-map{height:150px;background:radial-gradient(circle at 25% 40%,rgba(124,92,255,.55),transparent 55%),radial-gradient(circle at 70% 60%,rgba(232,184,75,.5),transparent 55%),repeating-linear-gradient(0deg,rgba(255,255,255,.07) 0 2px,transparent 2px 26px),repeating-linear-gradient(90deg,rgba(255,255,255,.07) 0 2px,transparent 2px 26px),#0e0e16;position:relative}
-.v-map:after{content:'пл. Свободы • сетка кварталов • LOD0/LOD1';position:absolute;left:18px;bottom:14px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:rgba(242,240,234,.7);background:rgba(11,11,15,.7);padding:8px 14px;border-radius:100px;border:1px solid var(--line)}
-h2{font-size:clamp(22px,3.6vw,34px);text-transform:uppercase;margin:44px 0 6px}
-.rule{width:72px;height:3px;background:linear-gradient(90deg,var(--gold),var(--vio));border-radius:3px;margin:18px 0 26px}
-.stack{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.stack div{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px 24px}
-.stack h3{font-size:17px;margin-bottom:8px}
-.stack p{color:var(--mut);font-size:15.5px}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:6px}
-.step{border:1px solid var(--line);border-radius:18px;padding:26px 22px;background:var(--card)}
-.step b{font-family:'Unbounded',sans-serif;font-size:26px;background:linear-gradient(135deg,var(--gold),var(--vio));-webkit-background-clip:text;background-clip:text;color:transparent}
-.step h3{font-size:16px;margin:10px 0 8px}
-.step p{color:var(--mut);font-size:15px}
-.cta{margin:44px 0;border-radius:26px;padding:clamp(30px,5vw,54px);background:linear-gradient(135deg,rgba(232,184,75,.16),rgba(124,92,255,.22)),#12121A;border:1px solid rgba(232,184,75,.35);text-align:center}
-.cta h2{margin:0}
-.cta p{color:var(--mut);margin:14px auto 26px;max-width:620px}
-.row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-.back{margin-top:26px;color:var(--mut);font-size:15px}
-.marquee{margin:40px calc(50% - 50vw) 0;width:100vw;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(255,255,255,.02);white-space:nowrap}
-.mtrack{display:inline-flex;padding:14px 0;animation:mq 22s linear infinite;font-family:'Unbounded',sans-serif;font-size:14px;letter-spacing:3px;color:var(--mut)}
-.mtrack span{padding:0 24px}
-@keyframes mq{to{transform:translateX(-50%)}}
-footer{text-align:center;padding:44px 20px;color:var(--mut);font-size:14px;border-top:1px solid var(--line);background:#08080c}
-.f-row{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:10px}
-.f-row img{width:38px;height:38px;object-fit:contain;border-radius:8px}
-.rv{opacity:1}
-.js .rv{opacity:0;transform:translateY(22px);transition:opacity .6s,transform .6s}
-.js .rv.on{opacity:1;transform:none}
-@media(max-width:1024px){.v-grid,.stack,.steps{grid-template-columns:1fr}.v-cell{border-right:0;border-bottom:1px solid var(--line)}.hdr nav a.hide{display:none}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-</style>
 </head>
 <body>
+<div id="preloader" aria-hidden="true"><div class="pl-mark">BYCUBE - EST 2019</div><div class="pl-num" id="pre-num">0</div><div class="pl-bar"><div class="pl-fill" id="pre-fill"></div></div></div>
+<canvas id="grain" aria-hidden="true"></canvas>
 <header class="hdr">
-<a class="brand" href="index.html" aria-label="ByCUBE на главную"><span class="badge3">BC³</span><small>ByCUBE</small></a>
-<nav aria-label="Навигация"><a class="hide" href="index.html#services">Услуги</a><a class="hide" href="index.html#works">Работы</a><a href="index.html#contact">Контакты</a><a class="btn btn-gold btn-sm" href="https://t.me/Avito3d" target="_blank" rel="noopener">Заказать</a></nav>
+<a class="brand" href="index.html" aria-label="ByCUBE домой"><b>BC3</b><small>ByCUBE - NN</small></a>
+<nav aria-label="Разделы"><a href="index.html#services">Услуги</a><a href="work.html">Кейсы</a><a href="brief.html">Бриф</a><a class="btn btn-solid btn-sm" href="https://t.me/Avito3d?text=Case_ByCUBE_nncity_hochu_tak_zhe">TG - Хочу так же</a></nav>
 </header>
 <main>
-<span class="kicker">Кейс • UE 5.8 • OSM → Blender → UE • nn-city</span>
-<h1>Процедурный НН <em>для UE5.8</em></h1>
-<p class="lead">пл. Свободы как играбельная сцена: улицы, дома, силуэт города — из открытых OSM-данных через Blender CityGenerator в Unreal Engine 5.8. Стабильные 60 FPS на средней видеокарте. Лёгкая статичная витрина вместо тяжёлого canvas и 3D-вьювера.</p>
-<div class="vitrine rv">
-<div class="v-head"><small>Витрина • пл. Свободы • LOD0/LOD1</small><small>FBX Scale 100 Z-up • UCX</small></div>
-<div class="v-map" role="img" aria-label="Схема квартала пл. Свободы: массы домов, улично-дорожная сетка, дворы"></div>
-<div class="v-grid">
-<div class="v-cell"><b>SM_Svoboda_01</b><p>массы домов • LOD 0–2 • именование под стриминг уровней</p></div>
-<div class="v-cell"><b>SM_Streets</b><p>дороги и тротуары • landscape-коллизия • разметка</p></div>
-<div class="v-cell"><b>SM_Yard</b><p>дворы • пропсы • свет • точки спавна</p></div>
+<div class="wrap hero">
+<p class="kicker rv">nn-city - Кейс - 3 недели - EST 2019</p>
+<h1 class="rv">Квартал Свободы для UE5.8</h1>
+<p class="lead rv">Бриф: играбельный квартал НН. 60 FPS на средней карте. Срок 3 недели.</p>
+<div class="cover rv"><div class="cover-top"><span>SM-03</span></div><div class="still-bar"><span class="mono">Обложка - вид сверху - LOD0</span><span class="mono">NDA AVAILABLE</span></div></div>
 </div>
+<div class="wrap">
+<section aria-label="Бриф и Scope">
+<div class="grid2">
+<div class="panel rv"><h3>Бриф - 2 строки</h3><p>Нужен квартал Свободы для прогулки в UE5.8.<br>60 FPS. Коллизии. 3 недели.</p></div>
+<div class="panel rv"><h3>Scope</h3><p>OSM. Blender. FBX Scale 100. Z-up. UCX. LOD. Unreal Engine 5.8.</p></div>
 </div>
-<h2>Стек и требования движка</h2>
-<div class="rule"></div>
-<div class="stack">
-<div class="rv"><h3>Blender 5.2 + CityGenerator</h3><p>OSM-импорт, процедурные фасады, чистка топологии, раскладка по кварталам. Пивот на нуле квартала.</p></div>
-<div class="rv"><h3>FBX: Scale 100, Z-up</h3><p>Единый масштаб под UE, именование SM_Svoboda_*. UV2 под лайтмап, LOD0 до 20к tris.</p></div>
-<div class="rv"><h3>UCX-коллизии</h3><p>Боксы UCX_ на каждый дом, улица — landscape-коллизия. Без per-poly физики — дёшево и сердито.</p></div>
-<div class="rv"><h3>LOD 0–2, Nanite off</h3><p>LOD2 — билборд. Culling distance 1500–4000 м. Тест: 60 FPS на средней видеокарте.</p></div>
+</section>
+<section aria-label="Схема">
+<div class="sec-head rv"><span class="sec-num">01</span><span class="mono">Схема - 3 шага</span></div>
+<h2 class="rv">Как собрали за 3 недели</h2>
+<div class="steps" style="grid-template-columns:repeat(3,1fr);margin-top:20px">
+<div class="step rv"><div class="n">Шаг 1</div><h3>OSM разбор</h3><p>Контуры и высоты. Чистка 2 дня.</p></div>
+<div class="step rv"><div class="n">Шаг 2</div><h3>Blender сборка</h3><p>Модули и LOD. FBX Scale 100. 10 дней.</p></div>
+<div class="step rv"><div class="n">Шаг 3</div><h3>UE5.8 свет</h3><p>UCX. Свет. 60 FPS. 9 дней.</p></div>
 </div>
-<h2>Пайплайн: 3 шага</h2>
-<div class="rule"></div>
-<div class="steps">
-<div class="step rv"><b>01</b><h3>OSM → Blender</h3><p>Выгрузка пл. Свободы, привязка координат, генерация масс домов и дорог.</p></div>
-<div class="step rv"><b>02</b><h3>Blender → FBX</h3><p>Ретопо, UV2, LOD, UCX-обёртки, экспорт Scale 100 Z-up пакетами по кварталам.</p></div>
-<div class="step rv"><b>03</b><h3>FBX → UE5.8</h3><p>Датасеты уровней, стриминг, свет, тест 60 FPS, пак для игры.</p></div>
+</section>
+<section aria-label="Витрина">
+<div class="sec-head rv"><span class="sec-num">02</span><span class="mono">Витрина - SM единицы</span></div>
+<h2 class="rv">Статика списком</h2>
+<p class="sec-desc rv">Без 3D вьювера. Честные плашки. Каждая единица с LOD.</p>
+<div class="grid2">
+<div class="panel rv"><h3>SM_01 Дом</h3><p>LOD0 8K трис. LOD1 2K. UCX бокс. 4K карта одна.</p></div>
+<div class="panel rv"><h3>SM_02 Угол</h3><p>LOD0 6K трис. LOD1 1.5K. UCX бокс. Тайлинг.</p></div>
+<div class="panel rv"><h3>SM_03 Арка</h3><p>LOD0 9K трис. LOD1 2K. UCX 3 бокса. Швы скрыты.</p></div>
+<div class="panel rv"><h3>SM_04 Двор</h3><p>LOD0 5K трис. LOD1 1K. UCX плоскость. 60 FPS.</p></div>
 </div>
-<div class="cta rv">
-<h2>Хочешь такой город?</h2>
-<p>Сделаем ваш квартал или город под UE/Unity за 2–4 недели. Напишите @Avito3d — ответим в течение дня с ценой и сроком.</p>
-<div class="row"><a class="btn btn-gold" href="https://t.me/Avito3d?text=%D0%A5%D0%BE%D1%87%D1%83%20%D1%82%D0%B0%D0%BA%D0%BE%D0%B9%20%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%20%D0%B4%D0%BB%D1%8F%20%D1%81%D0%B2%D0%BE%D0%B5%D0%B9%20%D0%B8%D0%B3%D1%80%D1%8B" target="_blank" rel="noopener">Хочу такой город</a><a class="btn btn-ghost" href="index.html">На главную</a></div>
+</section>
+<section aria-label="Credits и CTA">
+<div class="panel rv"><h3>Credits</h3><p>Сборка - ByCUBE. Свет UE - ByCUBE. Тест FPS - ByCUBE. Данные OSM - открытая карта.</p></div>
+<div class="banner rv" style="margin-top:16px"><div><span class="mono">CTA - Case метка</span><h2>Нужен такой квартал</h2><p>Пришлите границы и движок. Посчитаем за день. Ответ в течение дня.</p><a class="btn btn-solid btn-sm" href="https://t.me/Avito3d?text=Case_ByCUBE_nncity_hochu_tak_zhe">Написать с case-меткой</a></div><div class="tape-art" style="border-radius:14px;border:1px solid var(--line)"><span>UE</span></div></div>
+<p class="mut" style="margin-top:16px"><a href="work.html">Все кейсы</a> - <a href="https://formsubmit.co/hello@bycube.ru">Форма заявки</a></p>
+</section>
 </div>
-<p class="back">← <a href="index.html">На главную ByCUBE</a> · Заказ в Telegram: <a href="https://t.me/Avito3d" target="_blank" rel="noopener">@Avito3d</a> · <a href="index.html#contact">hello@bycube.ru</a></p>
-<div class="marquee" aria-hidden="true"><div class="mtrack"><span>OSM</span><span>•</span><span>BLENDER</span><span>•</span><span>FBX</span><span>•</span><span>UE 5.8</span><span>•</span><span>60 FPS</span><span>•</span><span>OSM</span><span>•</span><span>BLENDER</span><span>•</span><span>FBX</span><span>•</span><span>UE 5.8</span><span>•</span><span>60 FPS</span><span>•</span></div></div>
 </main>
-<footer>
-<div class="f-row"><img src="logo.png" alt="ByCUBE — логотип студии"><b style="font-family:'Unbounded',sans-serif;letter-spacing:3px">ByCUBE</b></div>
-<p>© 2026 ByCUBE · Процедурный НН · bycube.ru/nn-city.html</p>
-</footer>
-<script>
-document.documentElement.classList.add('js');
-(function(){
-if('IntersectionObserver' in window){
-var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target);}});},{threshold:.12});
-document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
-}else{document.querySelectorAll('.rv').forEach(function(el){el.classList.add('on');});}
-})();
-</script>
+<footer><div class="wrap"><div class="foot-big">Делаем 3D тихо. Сдаем в срок.</div><div class="foot-grid"><div><p class="mono">Меню</p><p><a href="index.html">Главная</a> - <a href="work.html">Работы</a> - <a href="pechat.html">Печать</a> - <a href="brief.html">Бриф</a></p></div><div><p class="mono">Связь</p><p><a href="https://t.me/Avito3d?text=Case_ByCUBE_nncity_hochu_tak_zhe">TG @Avito3d</a> - <a href="mailto:hello@bycube.ru">hello@bycube.ru</a></p></div><div><p class="mono">Профили</p><p><a href="https://www.avito.ru/user/08c77c8a926f2a148b2a59df87a85065/profile">Avito</a> - <a href="https://www.artstation.com/oksifilis">ArtStation</a></p></div></div><div class="foot-logo"><img src="logo.png" alt="ByCUBE logo" width="120" height="120"></div><div class="foot-base"><span>ByCUBE - Нижний Новгород - с 2019 года</span><span>2026 - Все права защищены</span></div></div></footer>
+<script src="main.js" defer></script>
 </body>
 </html>
