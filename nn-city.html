@@ -3,82 +3,164 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Квартал Свободы UE5.8 - ByCUBE nn-city</title>
-<meta name="description" content="Кейс Свободы. OSM плюс Blender плюс UE5.8. FBX Scale 100. UCX и LOD. 60 FPS. 3 недели. Нижний Новгород.">
+<title>Кейс: процедурный Нижний Новгород для UE5.8 — ByCUBE</title>
+<meta name="description" content="Кейс ByCUBE: процедурный Нижний Новгород (пл. Свободы) для UE5.8. OSM → Blender → FBX → UE: UCX, LOD, 60 FPS.">
 <link rel="canonical" href="https://bycube.ru/nn-city.html">
-<meta property="og:title" content="Квартал Свободы UE5.8 - ByCUBE">
-<meta property="og:description" content="OSM. Blender. FBX. 60 FPS. Схема из 3 шагов.">
+<meta property="og:title" content="Кейс: процедурный НН для UE5.8 — ByCUBE">
+<meta property="og:description" content="пл. Свободы: OSM → Blender → UE. FBX Scale 100, UCX, LOD.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://bycube.ru/nn-city.html">
 <meta property="og:image" content="https://bycube.ru/logo.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Квартал Свободы UE5.8 - ByCUBE">
-<meta name="twitter:image" content="https://bycube.ru/logo.png">
 <link rel="icon" type="image/png" href="logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","headline":"Квартал Свободы для UE5.8","author":{"@type":"Organization","name":"ByCUBE"},"about":"OSM Blender FBX Scale 100 UCX LOD 60 FPS","mainEntityOfPage":"https://bycube.ru/nn-city.html"}
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Процедурный Нижний Новгород для UE5.8",
+  "author": {"@type": "Organization", "name": "ByCUBE"},
+  "about": "OSM → Blender → UE5.8, FBX, UCX, LOD"
+}
 </script>
 </head>
 <body>
-<header class="hdr">
-<div class="hdr-in">
-<a class="brand" href="index.html" aria-label="ByCUBE домой">BCUBE<small>NN - EST 2019</small></a>
-<button class="burger no-print" id="burger" type="button" aria-expanded="false" aria-controls="nav">Меню</button>
-<nav class="nav" id="nav" aria-label="Разделы">
-<a href="index.html#services">Услуги</a>
-<a href="work.html">Работы</a>
-<a href="nn-city.html">Кейс</a>
-<a href="brief.html">Бриф</a>
-<a href="index.html#contact">Контакты</a>
-</nav>
-</div>
+
+<header class="hd">
+  <div class="hd-in">
+    <a href="index.html" class="logo">BY<span>CUBE</span></a>
+    <button class="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+    <nav class="nav">
+      <a href="index.html#services">Услуги</a>
+      <a href="work.html">Работы</a>
+      <a href="nn-city.html">Кейс</a>
+      <a href="brief.html">Бриф</a>
+      <a href="index.html#contact">Контакты</a>
+    </nav>
+  </div>
 </header>
+
 <main>
-<div class="wrap hero">
-<p class="kicker rv">nn-city - Кейс - 3 недели - EST 2019</p>
-<h1 class="rv">Квартал Свободы для UE5.8</h1>
-<p class="lead rv">Бриф: играбельный квартал НН. 60 FPS на средней карте. Срок 3 недели.</p>
-<div class="cover rv"><div class="cover-top"><span>SM-03</span></div><div class="still-bar"><span class="mono">ОБЛОЖКА - ВИД СВЕРХУ - LOD0</span><span class="mono">NDA AVAILABLE</span></div></div>
-</div>
-<div class="wrap">
-<section aria-label="Бриф и Scope">
-<div class="grid2">
-<div class="panel rv"><h3>Бриф - 2 строки</h3><p>Нужен квартал Свободы для прогулки в UE5.8.<br>60 FPS. Коллизии. 3 недели.</p></div>
-<div class="panel rv"><h3>Scope</h3><p>OSM. Blender. FBX Scale 100. Z-up. UCX. LOD. Unreal Engine 5.8.</p></div>
-</div>
+
+<section class="pg-hero">
+  <div class="wrap">
+    <p class="mono rv">Кейс · UE 5.8 · OSM → Blender → UE</p>
+    <h1 class="rv">Процедурный Нижний Новгород для UE5.8</h1>
+    <p class="rv">пл. Свободы как играбельная сцена: улицы, дома, силуэт города из открытых OSM-данных через Blender в Unreal Engine 5.8. Стабильные 60 FPS на средней видеокарте.</p>
+  </div>
 </section>
-<section aria-label="Схема">
-<div class="sec-head rv"><span class="sec-num">01</span><span class="mono">СХЕМА - 3 ШАГА</span></div>
-<h2 class="rv">Как собрали за 3 недели</h2>
-<div class="steps" style="grid-template-columns:repeat(3,1fr);margin-top:20px">
-<div class="step rv"><div class="n">Шаг 1</div><h3>OSM разбор</h3><p>Контуры и высоты. Чистка 2 дня.</p></div>
-<div class="step rv"><div class="n">Шаг 2</div><h3>Blender сборка</h3><p>Модули и LOD. FBX Scale 100. 10 дней.</p></div>
-<div class="step rv"><div class="n">Шаг 3</div><h3>UE5.8 свет</h3><p>UCX. Свет. 60 FPS. 9 дней.</p></div>
-</div>
+
+<section>
+  <div class="wrap">
+    <div class="case-grid">
+      <div class="case-main">
+        <h2 class="rv">Бриф</h2>
+        <p class="rv">Задача: собрать играбельный квартал Нижнего Новгорода для тестовой сцены в UE5.8. Данные только из открытых источников. Срок: 3 недели.</p>
+
+        <h2 class="rv">Scope</h2>
+        <p class="rv">OSM-импорт пл. Свободы. Генерация масс домов и улиц. Ретопо, UV, PBR-материалы. Экспорт FBX Scale 100 Z-up. Коллизии UCX. LOD0-2. Интеграция в UE5.8.</p>
+
+        <h2 class="rv">Пайплайн: 3 шага</h2>
+        <div class="pr-grid rv">
+          <div class="pr-step">
+            <p class="num">01</p>
+            <h3>OSM → Blender</h3>
+            <p>Выгрузка пл. Свободы, привязка координаты, генерация масс домов и дорог.</p>
+          </div>
+          <div class="pr-step">
+            <p class="num">02</p>
+            <h3>Blender → FBX</h3>
+            <p>Ретопо, UV2 под лайтмап, LOD, UCX, экспорт Scale 100 Z-up.</p>
+          </div>
+          <div class="pr-step">
+            <p class="num">03</p>
+            <h3>FBX → UE5.8</h3>
+            <p>Датасеты уровней, стриминг, свет, тест 60 FPS, пак для игры.</p>
+          </div>
+        </div>
+
+        <h2 class="rv">Результат</h2>
+        <p class="rv">Играбельная сцена пл. Свободы в UE5.8. 60 FPS на средней видеокарте. Исходники: проект UE + пак FBX + текстуры.</p>
+      </div>
+      <aside class="case-side rv">
+        <h3>Детали кейса</h3>
+        <dl>
+          <dt>Клиент</dt><dd>Инди-разработчик</dd>
+          <dt>Срок</dt><dd>3 недели</dd>
+          <dt>Движок</dt><dd>UE 5.8</dd>
+          <dt>Формат</dt><dd>FBX Scale 100</dd>
+          <dt>Коллизии</dt><dd>UCX</dd>
+          <dt>LOD</dt><dd>0-2</dd>
+          <dt>FPS</dt><dd>60</dd>
+        </dl>
+        <div class="sm-grid">
+          <div class="sm"><b>SM_Svoboda_01</b><span>массы домов</span></div>
+          <div class="sm"><b>SM_Streets</b><span>дороги</span></div>
+          <div class="sm"><b>SM_Yard</b><span>дворы</span></div>
+        </div>
+      </aside>
+    </div>
+  </div>
 </section>
-<section aria-label="Витрина">
-<div class="sec-head rv"><span class="sec-num">02</span><span class="mono">ВИТРИНА - SM ЕДИНИЦЫ</span></div>
-<h2 class="rv">Статика списком</h2>
-<p class="sec-desc rv">Без 3D вьювера. Честные плашки. Каждая единица с LOD.</p>
-<div class="grid2">
-<div class="panel rv"><h3>SM-01 Дом</h3><p>LOD0 8K трис. LOD1 2K. UCX бокс. 4K карта одна.</p></div>
-<div class="panel rv"><h3>SM-02 Угол</h3><p>LOD0 6K трис. LOD1 1.5K. UCX бокс. Тайлинг.</p></div>
-<div class="panel rv"><h3>SM-03 Арка</h3><p>LOD0 9K трис. LOD1 2K. UCX 3 бокса. Швы скрыты.</p></div>
-<div class="panel rv"><h3>SM-04 Двор</h3><p>LOD0 5K трис. LOD1 1K. UCX плоскость. 60 FPS.</p></div>
-</div>
+
+<section id="contact">
+  <div class="wrap">
+    <p class="mono sec-label rv">Хотите так же?</p>
+    <h2 class="sec-title rv">Сделаем ваш квартал для UE или Unity</h2>
+    <div class="ct-grid">
+      <div class="ct-info rv">
+        <h3>Telegram — быстрее всего</h3>
+        <p>Ответ в течение дня. Пишите: что нужно, движок, дедлайн.</p>
+        <div class="ct-links">
+          <a href="https://t.me/Avito3d?text=Хочу такой город для своей игры" target="_blank" rel="noopener">Telegram: @Avito3d</a>
+          <a href="https://www.avito.ru/user/08c77c8a926f2a148b2a59df87a85065/profile" target="_blank" rel="noopener">Avito: наш профиль</a>
+          <a href="mailto:hello@bycube.ru">Почта: hello@bycube.ru</a>
+        </div>
+      </div>
+      <form class="ct-form rv" action="https://formsubmit.co/hello@bycube.ru" method="POST">
+        <input type="hidden" name="_subject" value="Заявка с сайта ByCUBE (Кейс НН)">
+        <input type="hidden" name="_captcha" value="false">
+        <div class="hp"><input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></div>
+        <div>
+          <label for="name">Имя</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+          <label for="contact">Контакт (Telegram или почта)</label>
+          <input type="text" id="contact" name="contact" required>
+        </div>
+        <div>
+          <label for="msg">О проекте</label>
+          <textarea id="msg" name="message" placeholder="Что нужно, движок, дедлайн" required></textarea>
+        </div>
+        <label style="display:flex;align-items:center;gap:8px;font-size:14px;color:var(--mut)">
+          <input type="checkbox" name="nda" style="width:auto"> Нужен NDA
+        </label>
+        <button type="submit" class="btn btn-p">Отправить заявку</button>
+      </form>
+    </div>
+  </div>
 </section>
-<section aria-label="Credits и CTA">
-<div class="panel rv"><h3>Credits</h3><p>Сборка - ByCUBE. Свет UE - ByCUBE. Тест FPS - ByCUBE. Данные OSM - открытая карта.</p></div>
-<div class="banner rv" style="margin-top:16px"><div><span class="mono">CTA - CASE МЕТКА</span><h2>Нужен такой квартал</h2><p>Пришлите границы и движок. Посчитаем за день. Ответ в течение дня.</p><a class="btn btn-solid btn-sm" href="https://t.me/Avito3d?text=Case_ByCUBE_nncity_hochu_tak_zhe">Написать с case-меткой</a></div><div class="tape-art" style="border-radius:14px;border:1px solid var(--line)"><span>UE</span></div></div>
-<p class="mini" style="margin-top:16px"><a href="work.html">Все кейсы</a> - <a href="brief.html">Бриф</a> - <a href="https://www.artstation.com/oksifilis">ArtStation</a></p>
-</section>
-</div>
+
 </main>
-<footer><div class="wrap"><div class="foot-big">Делаем 3D тихо. Сдаем в срок.</div><div class="foot-grid"><div><p class="mono">МЕНЮ</p><p><a href="index.html">Главная</a> - <a href="work.html">Работы</a> - <a href="pechat.html">Печать</a> - <a href="brief.html">Бриф</a></p></div><div><p class="mono">СВЯЗЬ</p><p><a href="https://t.me/Avito3d?text=Case_ByCUBE_nncity_hochu_tak_zhe">TG Avito3d</a> - <a href="mailto:hello@bycube.ru">hello@bycube.ru</a></p></div><div><p class="mono">ПРОФИЛИ</p><p><a href="https://www.avito.ru/user/08c77c8a926f2a148b2a59df87a85065/profile">Avito</a> - <a href="https://www.artstation.com/oksifilis">ArtStation</a></p></div></div><div class="foot-logo"><img src="logo.png" alt="ByCUBE logo" width="120" height="120"></div><div class="foot-base"><span>ByCUBE - Нижний Новгород - с 2019 года</span><span>2026 - Все права защищены</span></div></div></footer>
-<script src="main.js" defer></script>
+
+<footer>
+  <div class="wrap">
+    <p class="big">ByCUBE</p>
+    <p class="mono">3D студия · Нижний Новгород · с 2019</p>
+    <div class="links">
+      <a href="https://t.me/Avito3d" target="_blank" rel="noopener">Telegram</a>
+      <a href="https://www.artstation.com/oksifilis" target="_blank" rel="noopener">ArtStation</a>
+      <a href="https://www.avito.ru/user/08c77c8a926f2a148b2a59df87a85065/profile" target="_blank" rel="noopener">Avito</a>
+      <a href="mailto:hello@bycube.ru">Почта</a>
+    </div>
+    <p class="mono" style="margin-top:32px">© 2026 ByCUBE. Все права защищены.</p>
+  </div>
+</footer>
+
+<script src="main.js"></script>
 </body>
 </html>
