@@ -72,3 +72,43 @@ document.querySelectorAll('.cs-tape').forEach(tape => {
     tape.addEventListener(ev, () => isDown = false);
   });
 });
+
+// Parallax for hero still
+const heroStill = document.querySelector('.still');
+if (heroStill && 'IntersectionObserver' in window) {
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const rect = e.boundingClientRect;
+        const y = (rect.top + rect.height / 2 - window.innerHeight / 2) * 0.05;
+        heroStill.style.transform = `translateY(${y}px)`;
+      }
+    });
+  }, { threshold: 0 });
+  io.observe(heroStill);
+}
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    const href = this.getAttribute('href');
+    if (href === '#') return;
+    e.preventDefault();
+    const target = document.querySelector(href);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// Header shadow on scroll
+const header = document.querySelector('.hd');
+if (header) {
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      header.style.boxShadow = '0 4px 20px rgba(0,0,0,.1)';
+    } else {
+      header.style.boxShadow = 'none';
+    }
+  });
+}
